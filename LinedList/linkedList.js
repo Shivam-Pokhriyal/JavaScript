@@ -28,6 +28,12 @@ class LinkedList{
   }
   
   insert(index,value){
+    if(index<=0){
+        return this.prepend(value)
+    }
+    if (index>= this.length){
+        return this.append(value)
+    }
     let i=0;
     let pointer= this.head
     while(i !== index-1){
