@@ -47,12 +47,37 @@ class LinkedList{
        next: holdingPointer
      }
     pointer.next= node;
+    this.length++;
+  }
+  
+  remove(index){
+      
+    if(index===0){
+      const node = this.head;
+      this.head= this.head.next;
+      this.length--;
+      return node
+    }
+    let pointer= this.head;
+    const prevIndex= index-1;
+    let i=0;
+    console.log(prevIndex)
+    while(i !== prevIndex){
+      pointer = pointer.next;
+      i++;
+    }
+    const node = pointer.next;
+    pointer.next = pointer.next.next ?? null;
+    if(index === this.length-1){
+      this.tail = pointer;
+    }
+    this.length--;
   }
 }
 
 const myLinkedList= new LinkedList(10);
-
 myLinkedList.prepend(6);
-myLinkedList.insert(1,20);
-
+myLinkedList.insert(2,20);
+myLinkedList.remove(2);
+myLinkedList.append(35);
 console.log(myLinkedList);
